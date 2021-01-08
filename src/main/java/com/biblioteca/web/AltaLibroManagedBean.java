@@ -47,7 +47,7 @@ public class AltaLibroManagedBean {
             
             FacesMessage msg = new FacesMessage("Alta libro ok");
             ctx.addMessage(null, msg);
-            return "index";
+            return "lista-libros";
         } catch (DBException ex) {
             log.severe("***No dio de alta libro. " + ex.getMessage());
             FacesMessage msg = new FacesMessage("Falló alta libro. " + ex.getMessage());
