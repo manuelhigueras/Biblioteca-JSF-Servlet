@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>login</title>
+         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    </h:head>
+    <h:body>
+        <h2>Login</h2>
+        <h:form id="formLogin">
+            Email:<h:inputText value="#{usuario.nombre}"  required="true" requiredMessage="Obligatorio" id="nombre"/>
+            <h:message for="nombre"/>
+            <br />
+            Clave: <h:inputSecret value="#{usuario.clave}"  required="true" requiredMessage="Obligatorio" id="pwd"/>
+            <h:message for="pwd" />
+            <br />
+            <h:commandButton value="Login" action="#{usuario.login()}" />
+        </h:form>
+        
+        <h:messages globalOnly="true" />
+    </h:body>
+</html>
+
