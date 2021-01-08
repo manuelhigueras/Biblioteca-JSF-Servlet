@@ -2,21 +2,21 @@ package com.biblioteca.web;
 
 import com.biblioteca.excepciones.LoginException;
 import com.biblioteca.servicios.LoginService;
-import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
+//import javax.inject.Named;
+//import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
-//import javax.faces.bean.ManagedBean;
-//import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
-@Named(value = "usuario")
-@SessionScoped
-//@ManagedBean
+//@Named(value = "usuario")
 //@SessionScoped
+@ManagedBean(name="usuario")
+@SessionScoped
 public class UsuarioManagedBean implements Serializable {
 
     private String nombre;

@@ -18,9 +18,9 @@ public class Libro implements Serializable{
         this.disponible = disponible;
     }
 
-    
-    
-    
+    public Libro() {
+    }
+
     public Integer getId() {
         return id;
     }
