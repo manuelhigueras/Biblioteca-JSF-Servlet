@@ -16,6 +16,7 @@
         Mensajes: <h:messages globalOnly="true" />
         <hr />
         
+        <h2>Lista Libros Alquilados   </h2>
         
         <h:dataTable value="#{librosAlquiladosMB.collectionAlquilados}" var="libro" >
             <h:column>
@@ -33,7 +34,7 @@
             
             <h:column rendered="#{librosAlquiladosMB.todos}">
                  <f:facet name="header"> Usuario Alquila </f:facet>
-                #{libro.autor}
+                #{libro.usuarioAlquila}
             </h:column>
 
             
