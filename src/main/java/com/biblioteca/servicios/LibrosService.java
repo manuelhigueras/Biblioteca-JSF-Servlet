@@ -4,6 +4,7 @@ import com.biblioteca.excepciones.DBException;
 import com.biblioteca.model.DB;
 import com.biblioteca.model.Libro;
 import com.biblioteca.model.Usuario;
+import com.biblioteca.servicios.dto.LibrosAlquiladosDTO;
 import java.util.Collection;
 
 public class LibrosService {
@@ -24,7 +25,11 @@ public class LibrosService {
          return DB.getUsuarios();
      }
      
-     public Collection<Libro> getLibrosAlquilados(String email){
+     public Collection<LibrosAlquiladosDTO> getLibrosAlquilados(String email){
          return DB.getLibrosAlquilados(email);
+     }
+     
+     public Collection<LibrosAlquiladosDTO> getAllLibrosAlquilados(){
+         return DB.getLibrosPrestados();
      }
 }

@@ -30,6 +30,11 @@
                 <f:facet name="header"> Autor </f:facet>
                 #{libro.autor}
             </h:column>
+            
+            <h:column rendered="#{librosAlquiladosMB.todos}">
+                 <f:facet name="header"> Usuario Alquila </f:facet>
+                #{libro.autor}
+            </h:column>
 
             
         </h:dataTable>

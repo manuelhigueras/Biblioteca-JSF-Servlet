@@ -1,6 +1,7 @@
 package com.biblioteca.model;
 
 import com.biblioteca.excepciones.DBException;
+import com.biblioteca.servicios.dto.LibrosAlquiladosDTO;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -34,7 +35,6 @@ public class DB {
         ArrayList<Libro> alquilados2 = new ArrayList<Libro>();
         librosAlquiladosPorUsuario.put("begona@gmail.com", alquilados1);
         librosAlquiladosPorUsuario.put("laura@gmail.com", alquilados2);
-
     }
 
     private DB() {
@@ -44,13 +44,24 @@ public class DB {
         return libros.values();
     }
 
-    public static Collection<Libro> getLibrosPrestados() {
-        Set<Libro> prestados = new HashSet<Libro>();
-        for (Libro l : libros.values()) {
-            if (!l.isDisponible()) {
-                prestados.add(l);
+    public static Collection<LibrosAlquiladosDTO> getLibrosPrestados() {
+        Set<LibrosAlquiladosDTO> prestados = new HashSet<LibrosAlquiladosDTO>();
+//        for (Libro l : libros.values()) {
+//            if (!l.isDisponible()) {
+//                prestados.add(l);
+//            }
+//        }
+         Set<String> emails = librosAlquiladosPorUsuario.keySet(); // emials
+         
+         for(String email : emails){
+            for(Libro libro : librosAlquiladosPorUsuario.get(email)){
+                LibrosAlquiladosDTO alq = new LibrosAlquiladosDTO(libro.getId(), 
+                                            libro.getTitulo(),
+                                            libro.getAutor(),
+                                            email);
+                prestados.add(alq);
             }
-        }
+         }
         return prestados;
     }
 
@@ -62,12 +73,18 @@ public class DB {
         alquilado.setDisponible(false);
         
         librosAlquiladosPorUsuario.get(email).add(alquilado);
-
     }
     
-    
-    public synchronized  static List<Libro> getLibrosAlquilados(String email){
-        return librosAlquiladosPorUsuario.get(email);
+    public synchronized  static Collection<LibrosAlquiladosDTO> getLibrosAlquilados(String email){
+        Set<LibrosAlquiladosDTO> prestados = new HashSet<LibrosAlquiladosDTO>();
+         for(Libro libro : librosAlquiladosPorUsuario.get(email)){
+                LibrosAlquiladosDTO alq = new LibrosAlquiladosDTO(libro.getId(), 
+                                            libro.getTitulo(),
+                                            libro.getAutor(),
+                                            email);
+                prestados.add(alq);
+            }        
+        return prestados;
     }
     
 
