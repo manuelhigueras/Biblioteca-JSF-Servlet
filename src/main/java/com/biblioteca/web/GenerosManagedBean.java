@@ -27,7 +27,6 @@ public class GenerosManagedBean {
     public Collection<Genero> getCollecionGeneros() {
         return collecionGeneros;
     }
+   
     
-    
-
 }

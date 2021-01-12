@@ -15,4 +15,8 @@ public class GenerosService {
         return DB.getGeneroPorId(id);
     }
     
+    public void altaGenero(Genero genero) throws DBException{
+         DB.altaGenero(genero);
+    }
+    
 }

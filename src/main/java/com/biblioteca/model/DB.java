@@ -129,5 +129,10 @@ public class DB {
         return generos.get(id);
     }
      
-     
+     public synchronized static void altaGenero(Genero g) throws DBException {
+        if (generos.containsKey(g.getId())) {
+            throw new DBException("El género no pudo ser añadido. El id ya existe.");
+        }
+        generos.put(g.getId(), g);
+    }
 }
