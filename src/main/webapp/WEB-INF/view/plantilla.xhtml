@@ -22,12 +22,24 @@
         <div id="top" class="top">
             <h3>BILBIOTECA  <ui:insert name="top">Top</ui:insert> </h3>
             Usuario:  #{usuario.nombre}
+            
+            <h:panelGroup rendered="#{ usuario.nombre == null }">                
+                <h:form id="formLog">
+                    <h:commandLink value="login" action="login" />
+                </h:form>                
+            </h:panelGroup>
+            <h:panelGroup rendered="#{ usuario.nombre != null }">                
+                <h:form id="formLogOut">
+                        <h:commandLink value="logout" action="#{usuario.logout()}" />
+                </h:form>                
+            </h:panelGroup>
+            
         </div>
         <div>
             <div id="left">
                 <ui:insert name="left">Left</ui:insert>
                 <!-- MENÚ -->
-                <ui:include src="menu.xhtml" />
+                <!--ui:include src="menu.xhtml" / -->
             </div>
             <div id="content" class="left_content">
                 <hr />   

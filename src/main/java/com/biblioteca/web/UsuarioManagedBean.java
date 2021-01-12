@@ -21,7 +21,9 @@ public class UsuarioManagedBean implements Serializable {
 
     private String nombre; //email
     private String clave;
-    
+
+    LoginService loginService = new LoginService();
+
     public UsuarioManagedBean() {
     }
 
@@ -40,30 +42,37 @@ public class UsuarioManagedBean implements Serializable {
     public void setClave(String clave) {
         this.clave = clave;
     }
-    
-    public String login(){
+
+    public String login() {
         // BD - ir a buscar usuario y claeveç
         System.out.printf("login %s   y clave %s", nombre, clave);
-        LoginService  loginService = new LoginService();
+
         FacesContext ctx = FacesContext.getCurrentInstance();
         HttpSession sesion = (HttpSession) ctx.getExternalContext().getSession(true);
- 
+
         try {
-            loginService.login(nombre, clave, sesion );
-             return "index";
+            loginService.login(nombre, clave, sesion);
+            return "index";
         } catch (LoginException ex) {
             Logger.getLogger(UsuarioManagedBean.class.getName()).log(Level.SEVERE, null, ex);
-            nombre  = "";
+            nombre = "";
             clave = "";
-            
+
             //mensaje de error
             FacesMessage msg = new FacesMessage(ex.getMessage());
             //ctx.addMessage("formLogin:pwd", msg);
             ctx.addMessage(null, msg);
             return "login";
         }
-     
-       
+
     }
-    
+
+    public String logout() {
+        FacesContext ctx = FacesContext.getCurrentInstance();
+        HttpSession sesion = (HttpSession) ctx.getExternalContext().getSession(true);
+        loginService.logout(sesion);
+        
+        return "login?faces-redirect=true";
+    }
+
 }
