@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-      <h:head>
+    <h:head>
         <title>lista libros</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     </h:head>
@@ -15,49 +15,54 @@
         <hr />   
         Mensajes: <h:messages globalOnly="true" />
         <hr />
-        
-        
+
+
         <h:dataTable value="#{librosMB.coleccionLibros}" var="libro" >
             <h:column>
                 <f:facet name="header"> Id </f:facet>
-                #{libro.id}
+                    #{libro.id}
             </h:column>
-              <h:column>
+            <h:column>
                 <f:facet name="header"> Titulo </f:facet>
-                #{libro.titulo}
+                    #{libro.titulo}
             </h:column>
-              <h:column>
+            <h:column>
                 <f:facet name="header"> Autor </f:facet>
-                #{libro.autor}
+                    #{libro.autor}
+            </h:column>
+        
+            <h:column>
+                <f:facet name="header"> Género </f:facet>
+                    #{libro.genero.descripcion}
             </h:column>
             <h:column>
                 <f:facet name="header"> Disponible </f:facet>
-               
+
                 <h:outputLabel rendered="#{libro.disponible}" value="Disponible"></h:outputLabel>
                 <h:outputLabel rendered="#{not libro.disponible}" value=" No Disponible"></h:outputLabel>
-                 
+
             </h:column>
-            
+
             <h:column>
-                 <f:facet name="header"> Acciones </f:facet>
-                 <h:form id="formAlquilar" rendered="#{libro.disponible}">
-                     <h:selectOneMenu value="#{librosMB.emailSeleccionado}" rendered="true" >
-                       
-                         <f:selectItems value="#{librosMB.coleccionUsuarios}" var="item"
-                                        itemValue="#{item.email}" 
-                                        itemLabel="#{item.nombre} #{item.apellidos}" />
-                     </h:selectOneMenu>
-                     <h:commandButton value="Alquilar"
-                                  action="#{librosMB.alquilar(libro.id)}" />
-                 </h:form>
+                <f:facet name="header"> Acciones </f:facet>
+                <h:form id="formAlquilar" rendered="#{libro.disponible}">
+                    <h:selectOneMenu value="#{librosMB.emailSeleccionado}" rendered="true" >
+
+                        <f:selectItems value="#{librosMB.coleccionUsuarios}" var="item"
+                                       itemValue="#{item.email}" 
+                                       itemLabel="#{item.nombre} #{item.apellidos}" />
+                    </h:selectOneMenu>
+                    <h:commandButton value="Alquilar"
+                                     action="#{librosMB.alquilar(libro.id)}" />
+                </h:form>
             </h:column>
-            
-            
-            
+
+
+
         </h:dataTable>
-        
-        
-        
+
+
+
     </h:body>
 </html>
 

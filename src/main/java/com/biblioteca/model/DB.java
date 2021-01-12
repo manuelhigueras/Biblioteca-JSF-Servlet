@@ -20,13 +20,15 @@ public class DB {
     //colecciona para guardar los libros alquilados por email
     private static Map<String, List<Libro>> librosAlquiladosPorUsuario;
 
-    static {
+    static {        
+        Genero g1 = new Genero(1, "Comedia");
+        
         //LIBROS
         libros = new HashMap<Integer, Libro>();
-        libros.put(1, new Libro(1, "El Guijote", "Miguel de Cervantes", true));
-        libros.put(2, new Libro(2, "La Odisea", "Homero", true));
-        libros.put(3, new Libro(3, "La Divina Comedia", "Dante", true));
-        libros.put(4, new Libro(4, "La vida es Sueño", "Calderón de la Barca", true));
+        libros.put(1, new Libro(1, "El Quijote", "Miguel de Cervantes", true, g1 ));
+        libros.put(2, new Libro(2, "La Odisea", "Homero", true, g1 ));
+        libros.put(3, new Libro(3, "La Divina Comedia", "Dante", true, g1 ));
+        libros.put(4, new Libro(4, "La vida es Sueño", "Calderón de la Barca", true, g1));
 
         //USUARIOS
         usuarios = new HashSet<Usuario>();
@@ -42,7 +44,7 @@ public class DB {
         
         //GENEROS
         generos = new HashMap<Integer, Genero>();
-        generos.put(1, new Genero(1, "Comedia"));
+        generos.put(1, g1 );
         generos.put(2, new Genero(2, "Drama"));
         generos.put(3, new Genero(3, "Histórico"));
     }

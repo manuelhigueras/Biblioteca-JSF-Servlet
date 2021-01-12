@@ -2,6 +2,7 @@ package com.biblioteca.web;
 
 import com.biblioteca.excepciones.DBException;
 import com.biblioteca.model.Libro;
+import com.biblioteca.servicios.GenerosService;
 import com.biblioteca.servicios.LibrosService;
 
 import java.util.logging.Logger;
@@ -18,6 +19,7 @@ import javax.faces.context.FacesContext;
 public class AltaLibroManagedBean {
     //atributos
     private Libro libroNuevo;
+    private Integer idGeneroSel;
     
     //Logger
     private Logger log = Logger.getLogger("AltaLibroManagedBean");
@@ -34,15 +36,28 @@ public class AltaLibroManagedBean {
     public void setLibroNuevo(Libro libroNuevo) {
         this.libroNuevo = libroNuevo;
     }
+
+    public Integer getIdGeneroSel() {
+        return idGeneroSel;
+    }
+
+    public void setIdGeneroSel(Integer idGeneroSel) {
+        this.idGeneroSel = idGeneroSel;
+    }
+    
+    
     
     //acciones 
     public String altaLibro(){
         //libroNuevo ya tiene datos
-        LibrosService s = new LibrosService();
+        LibrosService libroService = new LibrosService();
+        GenerosService generoService = new GenerosService();
+     
         libroNuevo.setDisponible(true);
-        FacesContext ctx = FacesContext.getCurrentInstance();
+        FacesContext ctx = FacesContext.getCurrentInstance();        
         try {
-            s.altaLibro(libroNuevo);
+            libroNuevo.setGenero(generoService.getGeneroPorId(idGeneroSel));
+            libroService.altaLibro(libroNuevo);
             log.info("****Alta libro ok");
             
             FacesMessage msg = new FacesMessage("Alta libro ok");

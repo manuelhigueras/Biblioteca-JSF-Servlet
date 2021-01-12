@@ -10,17 +10,20 @@ public class Libro implements Serializable{
     private String titulo;
     private String autor;
     private boolean disponible;
+    private Genero genero;
 
-    public Libro(Integer id, String titulo, String autor, boolean disponible) {
+    public Libro(Integer id, String titulo, String autor, 
+                 boolean disponible, Genero genero) {
         this.id = id;
         this.titulo = titulo;
         this.autor = autor;
         this.disponible = disponible;
+        this.genero = genero;
     }
 
     public Libro() {
     }
-
+    
     public Integer getId() {
         return id;
     }
@@ -52,6 +55,16 @@ public class Libro implements Serializable{
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
     }
+
+    public Genero getGenero() {
+        return genero;
+    }
+
+    public void setGenero(Genero genero) {
+        this.genero = genero;
+    }
+    
+    
 
     @Override
     public int hashCode() {
