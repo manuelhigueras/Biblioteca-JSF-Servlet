@@ -40,7 +40,7 @@
             
             <h:column>
                  <f:facet name="header"> Acciones </f:facet>
-                 <h:form  rendered="#{libro.disponible}">
+                 <h:form id="formAlquilar" rendered="#{libro.disponible}">
                      <h:selectOneMenu value="#{librosMB.emailSeleccionado}" rendered="true" >
                        
                          <f:selectItems value="#{librosMB.coleccionUsuarios}" var="item"

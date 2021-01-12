@@ -15,26 +15,36 @@ public class DB {
 
     private static Map<Integer, Libro> libros;
     private static Set<Usuario> usuarios;
+    private static Map<Integer, Genero> generos;
 
     //colecciona para guardar los libros alquilados por email
     private static Map<String, List<Libro>> librosAlquiladosPorUsuario;
 
     static {
+        //LIBROS
         libros = new HashMap<Integer, Libro>();
         libros.put(1, new Libro(1, "El Guijote", "Miguel de Cervantes", true));
         libros.put(2, new Libro(2, "La Odisea", "Homero", true));
         libros.put(3, new Libro(3, "La Divina Comedia", "Dante", true));
         libros.put(4, new Libro(4, "La vida es Sueño", "Calderón de la Barca", true));
 
+        //USUARIOS
         usuarios = new HashSet<Usuario>();
         usuarios.add(new Usuario("begona@gmail.com", "1234", "Begoña", "Olea"));
         usuarios.add(new Usuario("laura@gmail.com", "1234", "Laura", "Bilbao"));
 
+        //LIBROS PRESTADOS POR USUARIO
         librosAlquiladosPorUsuario = new HashMap<String, List<Libro>>();
         ArrayList<Libro> alquilados1 = new ArrayList<Libro>();
         ArrayList<Libro> alquilados2 = new ArrayList<Libro>();
         librosAlquiladosPorUsuario.put("begona@gmail.com", alquilados1);
         librosAlquiladosPorUsuario.put("laura@gmail.com", alquilados2);
+        
+        //GENEROS
+        generos = new HashMap<Integer, Genero>();
+        generos.put(1, new Genero(1, "Comedia"));
+        generos.put(1, new Genero(2, "Drama"));
+        generos.put(1, new Genero(3, "Histórico"));
     }
 
     private DB() {
@@ -105,4 +115,17 @@ public class DB {
             throw new DBException("El usuario no pudo ser añadido. El email ya existe.");
         }
     }
+ 
+     public synchronized static Collection<Genero> getGeneros() {
+        return generos.values();
+    }
+     
+    public synchronized static Genero getGeneroPorId(Integer id)  throws DBException {
+        if( ! generos.containsKey(id)){
+            throw new DBException("El genero no existe para el id dado");
+        }
+        return generos.get(id);
+    }
+     
+     
 }
