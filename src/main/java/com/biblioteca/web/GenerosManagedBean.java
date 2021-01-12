@@ -16,10 +16,12 @@ public class GenerosManagedBean {
     private GenerosService servicio = new GenerosService();
             
     public GenerosManagedBean() {
+        System.out.println("************** instanciando un GenerosManagedBean");
     }
     
     @PostConstruct
     public void inicializar(){
+        System.out.println("............. inicializando  un GenerosManagedBean");
         this.collecionGeneros = servicio.getGeneros();
     }
     
