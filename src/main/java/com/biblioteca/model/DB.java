@@ -43,8 +43,8 @@ public class DB {
         //GENEROS
         generos = new HashMap<Integer, Genero>();
         generos.put(1, new Genero(1, "Comedia"));
-        generos.put(1, new Genero(2, "Drama"));
-        generos.put(1, new Genero(3, "Histórico"));
+        generos.put(2, new Genero(2, "Drama"));
+        generos.put(3, new Genero(3, "Histórico"));
     }
 
     private DB() {
@@ -122,7 +122,7 @@ public class DB {
      
     public synchronized static Genero getGeneroPorId(Integer id)  throws DBException {
         if( ! generos.containsKey(id)){
-            throw new DBException("El genero no existe para el id dado");
+            throw new DBException("El género no existe para el id dado");
         }
         return generos.get(id);
     }

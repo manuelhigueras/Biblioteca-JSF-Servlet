@@ -6,14 +6,14 @@ import java.util.Objects;
 public class Genero implements Serializable{
     
     private Integer id;
-    private String Descripcion;
+    private String descripcion;
 
     public Genero() {
     }
 
-    public Genero(Integer id, String Descripcion) {
+    public Genero(Integer id, String descripcion) {
         this.id = id;
-        this.Descripcion = Descripcion;
+        this.descripcion = descripcion;
     }
 
     public Integer getId() {
@@ -25,11 +25,11 @@ public class Genero implements Serializable{
     }
 
     public String getDescripcion() {
-        return Descripcion;
+        return descripcion;
     }
 
-    public void setDescripcion(String Descripcion) {
-        this.Descripcion = Descripcion;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     @Override

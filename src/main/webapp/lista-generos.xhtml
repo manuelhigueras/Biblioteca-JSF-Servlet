@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      <h:head>
+        <title>lista generos</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    </h:head>
+    <h:body>
+        <h1>Biblioteca - Lista Libros</h1>
+        <hr />
+        Usuario:  #{usuario.nombre}
+        <hr />
+        <hr />   
+        Mensajes: <h:messages globalOnly="true" />
+        <hr />
+        
+        
+        <h:dataTable value="#{generosMB.collecionGeneros}" var="genero" >
+            <h:column>
+                <f:facet name="header"> Id </f:facet>
+                #{genero.id}
+            </h:column>
+              <h:column>
+                <f:facet name="header"> Titulo </f:facet>
+                #{genero.descripcion}
+            </h:column>
+             
+        </h:dataTable>
+        
+        
+        
+    </h:body>
+</html>
+
