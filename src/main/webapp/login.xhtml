@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
@@ -17,6 +18,13 @@
             </ui:define>
 
             <ui:define name="content">
+
+                Fecha Actual: 
+                <h:outputLabel value="#{usuario.fecha}" >
+                    <f:convertDateTime pattern="dd/MM/yyyy" />
+                </h:outputLabel>
+
+
                 <h2>Login</h2>
                 <h:form id="formLogin">
                     Email:<h:inputText value="#{usuario.nombre}"  required="true" requiredMessage="Obligatorio" id="nombre"/>
@@ -25,7 +33,14 @@
                     Clave: <h:inputSecret value="#{usuario.clave}"  required="true" requiredMessage="Obligatorio" id="pwd"/>
                     <h:message for="pwd" />
                     <br />
+                    Fecha:
+                    <h:inputText value="#{usuario.fecha}" >
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:inputText>
                     <h:commandButton value="Login" action="#{usuario.login()}" />
+                    <h:commandButton value="Cancelar" 
+                                     action="index"
+                                     immediate="true"/>
                 </h:form>
             </ui:define>
 

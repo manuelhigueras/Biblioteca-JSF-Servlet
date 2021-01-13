@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.3"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd">
+    <navigation-rule>
+        <from-view-id>/*</from-view-id>
+        <navigation-case>
+            <from-outcome>generos</from-outcome>
+            <to-view-id>/lista-generos.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>home</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>altagenero</from-outcome>
+            <to-view-id>/alta-genero.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>librosalquilados</from-outcome>
+            <if>#{usuario.nombre != null}</if>
+            <to-view-id>/lista-libros-alquilados.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>librosalquilados</from-outcome>
+            <if>#{usuario.nombre == null}</if>
+            <to-view-id>/login.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>altalibro</from-outcome>
+            <to-view-id>/alta-libro.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>login</from-outcome>
+            <to-view-id>/login.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>libros</from-outcome>
+            <to-view-id>/lista-libros.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!-- application>
+        <resource-bundle>
+            <base-name>com.biblioteca.web.recursos.textos</base-name>
+            <var>msg</var>
+        </resource-bundle>
+    </application -->
+    
+</faces-config>

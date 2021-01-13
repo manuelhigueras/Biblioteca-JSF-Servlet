@@ -5,6 +5,7 @@ import com.biblioteca.servicios.LoginService;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
@@ -21,11 +22,23 @@ public class UsuarioManagedBean implements Serializable {
 
     private String nombre; //email
     private String clave;
+    
+    private Date fecha = new Date();
 
     LoginService loginService = new LoginService();
 
     public UsuarioManagedBean() {
     }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+    
+    
 
     public String getNombre() {
         return nombre;

@@ -3,12 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view locale="es">
     <h:head>
         <title>alta libro</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     </h:head>
     <h:body>
-         <h1>Biblioteca - Alta Libro </h1>
+        <h1> **#{msg.app_titulo}** - Alta Libro </h1>
         <hr />
         Usuario:  #{usuario.nombre}
         <hr />   
@@ -30,5 +31,6 @@
             <h:commandButton value="Guardar" action="#{altaLibro.altaLibro()}" />
         </h:form>
     </h:body>
+    </f:view>
 </html>
 
