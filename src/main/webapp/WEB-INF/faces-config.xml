@@ -41,11 +41,15 @@
         </navigation-case>
     </navigation-rule>
     
-    <!-- application>
+    <application>
         <resource-bundle>
             <base-name>com.biblioteca.web.recursos.textos</base-name>
-            <var>msg</var>
+            <var>textos</var>
         </resource-bundle>
-    </application -->
+        <locale-config>
+            <default-locale>es</default-locale>
+            <supported-locale>en</supported-locale>
+        </locale-config>
+    </application>
     
 </faces-config>

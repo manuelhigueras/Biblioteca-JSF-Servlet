@@ -4,49 +4,57 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view locale="en">
+        <h:head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <title><ui:insert name="titulo">titulo</ui:insert></title>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+            <!-- jQuery library -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+            <h:outputStylesheet library="css" name="cssLayout.css" />
+            <h:outputStylesheet library="css" name="default.css" />
+            <h:outputScript library="js" name="funciones.js" />
+        </h:head>
 
-    <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title><ui:insert name="titulo">titulo</ui:insert></title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
-        <!-- jQuery library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <h:outputStylesheet library="css" name="cssLayout.css" />
-        <h:outputStylesheet library="css" name="default.css" />
-        <h:outputScript library="js" name="funciones.js" />
-    </h:head>
+        <h:body>
+            <div id="top" class="top">
+                <h3>#{textos.app_titulo}  <ui:insert name="top">Top</ui:insert> </h3>
+                Usuario:  #{usuario.nombre}
 
-    <h:body>
-        <div id="top" class="top">
-            <h3>#{textos.app_titulo}  <ui:insert name="top">Top</ui:insert> </h3>
-            Usuario:  #{usuario.nombre}
-            
-            <h:panelGroup rendered="#{ usuario.nombre == null }">                
-                <h:form id="formLog">
-                    <h:commandLink value="login" action="login" />
-                </h:form>                
-            </h:panelGroup>
-            <h:panelGroup rendered="#{ usuario.nombre != null }">                
-                <h:form id="formLogOut">
+                <h:panelGroup rendered="#{ usuario.nombre == null }">                
+                    <h:form id="formLog">
+                        <h:commandLink value="login" action="login" />
+                    </h:form>                
+                </h:panelGroup>
+                <h:panelGroup rendered="#{ usuario.nombre != null }">                
+                    <h:form id="formLogOut">
                         <h:commandLink value="logout" action="#{usuario.logout()}" />
-                </h:form>                
-            </h:panelGroup>
-            
-        </div>
-        <div>
-            <div id="left">
-                <ui:insert name="left">Left</ui:insert>
-                <!-- MENÚ -->
-                <ui:include src="menu.xhtml" />
+                    </h:form>                
+                </h:panelGroup>
+
+                <ui:remove>
+                <h:form id="formIdioma">
+                    <h:commandLink value="es" action="" />
+                    <h:commandLink value="en" action="" />
+                </h:form>
+                </ui:remove>
+
             </div>
-            <div id="content" class="left_content">
-                <hr />   
-                Mensajes: <h:messages globalOnly="true" />
-                <hr />
-                <ui:insert name="content">Content</ui:insert>
+            <div>
+                <div id="left">
+                    <ui:insert name="left">Left</ui:insert>
+                    <!-- MENÚ -->
+                    <ui:include src="menu.xhtml" />
+                </div>
+                <div id="content" class="left_content">
+                    <hr />   
+                    Mensajes: <h:messages globalOnly="true" />
+                    <hr />
+                    <ui:insert name="content">Content</ui:insert>
+                </div>
             </div>
-        </div>
-    </h:body>
+        </h:body>
+    </f:view>
 </html>

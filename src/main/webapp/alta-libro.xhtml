@@ -16,7 +16,8 @@
         Mensajes: <h:messages globalOnly="true" />
         <hr />
         <h:form id="formAltaLibro">
-            Identificador: <h:inputText value="#{altaLibro.libroNuevo.id}" />
+            #{textos.libro_id}
+            <h:inputText value="#{altaLibro.libroNuevo.id}" />
             <br />
             Título: <h:inputText value="#{altaLibro.libroNuevo.titulo}" />            
             <br />
