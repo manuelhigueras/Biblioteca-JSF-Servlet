@@ -13,7 +13,6 @@ import javax.faces.context.FacesContext;
 //import javax.inject.Named;
 //import javax.enterprise.context.RequestScoped;
 
-
 @ManagedBean(name = "altaLibro")
 @RequestScoped
 public class AltaLibroManagedBean {
@@ -44,8 +43,6 @@ public class AltaLibroManagedBean {
     public void setIdGeneroSel(Integer idGeneroSel) {
         this.idGeneroSel = idGeneroSel;
     }
-    
-    
     
     //acciones 
     public String altaLibro(){

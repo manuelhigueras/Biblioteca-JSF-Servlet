@@ -43,7 +43,7 @@
     
     <application>
         <resource-bundle>
-            <base-name>com.biblioteca.web.recursos.textos</base-name>
+            <base-name>com.tareas.recursos.textos</base-name>
             <var>textos</var>
         </resource-bundle>
         <locale-config>

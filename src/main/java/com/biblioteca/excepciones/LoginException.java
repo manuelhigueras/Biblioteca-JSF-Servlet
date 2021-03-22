@@ -5,10 +5,6 @@
  */
 package com.biblioteca.excepciones;
 
-/**
- *
- * @author ususario
- */
 public class LoginException  extends Exception{
 
     public LoginException(String msg) {

@@ -25,7 +25,7 @@ public class UsuarioManagedBean implements Serializable {
     
     private Date fecha = new Date();
 
-    LoginService loginService = new LoginService();
+    private LoginService loginService = new LoginService();
 
     public UsuarioManagedBean() {
     }
@@ -37,8 +37,6 @@ public class UsuarioManagedBean implements Serializable {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-    
-    
 
     public String getNombre() {
         return nombre;

@@ -48,7 +48,5 @@ public class LibrosAlquiladosDTO implements Serializable{
     public void setUsuarioAlquila(String usuarioAlquila) {
         this.usuarioAlquila = usuarioAlquila;
     }
-    
-    
-    
+  
 }

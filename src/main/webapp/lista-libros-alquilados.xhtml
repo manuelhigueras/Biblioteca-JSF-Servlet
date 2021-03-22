@@ -17,9 +17,8 @@
         Mensajes: <h:messages globalOnly="true" />
         <hr />
         
-        <h2>
-            Lista Libros Alquilados  
-            <c:if test="#{librosAlquiladosMB.todos}"> para Todos los Ususarios</c:if>
+        <h2>Lista Libros Alquilados
+           <c:if test="#{librosAlquiladosMB.todos}">Para todos los usuarios</c:if>
         </h2>
         
         <h:dataTable value="#{librosAlquiladosMB.collectionAlquilados}" var="libro" >
@@ -35,17 +34,17 @@
                 <f:facet name="header"> Autor </f:facet>
                 #{libro.autor}
             </h:column>
+            <h:column>
+                <f:facet name="header"> Genero </f:facet>
+            </h:column>
             
             <h:column rendered="#{librosAlquiladosMB.todos}">
                  <f:facet name="header"> Usuario Alquila </f:facet>
                 #{libro.usuarioAlquila}
             </h:column>
 
-            
         </h:dataTable>
-        
-        
-        
+ 
     </h:body>
 </html>
 

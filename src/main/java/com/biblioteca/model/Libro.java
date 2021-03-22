@@ -2,6 +2,7 @@
 package com.biblioteca.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
 public class Libro implements Serializable{
@@ -11,17 +12,36 @@ public class Libro implements Serializable{
     private String autor;
     private boolean disponible;
     private Genero genero;
+    private Date fechaPublicacion;
+    private double precio;
 
-    public Libro(Integer id, String titulo, String autor, 
-                 boolean disponible, Genero genero) {
+    public Libro(Integer id, String titulo, String autor, boolean disponible, Genero genero, Date fechaPublicacion, double precio) {
         this.id = id;
         this.titulo = titulo;
         this.autor = autor;
         this.disponible = disponible;
         this.genero = genero;
+        this.fechaPublicacion = fechaPublicacion;
+        this.precio = precio;
     }
 
     public Libro() {
+    }
+
+    public Date getFechaPublicacion() {
+        return fechaPublicacion;
+    }
+
+    public void setFechaPublicacion(Date fechaPublicacion) {
+        this.fechaPublicacion = fechaPublicacion;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
     
     public Integer getId() {
@@ -63,8 +83,6 @@ public class Libro implements Serializable{
     public void setGenero(Genero genero) {
         this.genero = genero;
     }
-    
-    
 
     @Override
     public int hashCode() {
@@ -90,7 +108,5 @@ public class Libro implements Serializable{
         }
         return true;
     }
-    
-    
-    
+
 }

@@ -1,7 +1,9 @@
 package com.biblioteca.web;
 
+import com.biblioteca.model.Genero;
 import com.biblioteca.model.Libro;
 import com.biblioteca.model.Usuario;
+import com.biblioteca.servicios.GeneroService;
 import com.biblioteca.servicios.LibrosService;
 import java.util.Collection;
 import javax.inject.Named;
@@ -14,10 +16,11 @@ import javax.faces.context.FacesContext;
 public class LibrosManagedBean {
 
     private Collection<Libro>  coleccionLibros;
+    private Collection<Genero> coleccionGenero;
     private Collection<Usuario>  coleccionUsuarios;
     
     private LibrosService servicio = new LibrosService();    
-    private String emailSeleccionado ;
+    private String emailSeleccionado;
     
     public LibrosManagedBean() {
         this.coleccionLibros = servicio.getAllLibros();
@@ -46,6 +49,6 @@ public class LibrosManagedBean {
         FacesContext ctx = FacesContext.getCurrentInstance();
         FacesMessage msg = new FacesMessage("Alquiló el libro a " + this.emailSeleccionado);
         ctx.addMessage(null, msg);
-        return "lista-libros-alquilados";
+        return "lista-libros-alquilado";
     }
 }

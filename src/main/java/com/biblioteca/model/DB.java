@@ -2,13 +2,18 @@ package com.biblioteca.model;
 
 import com.biblioteca.excepciones.DBException;
 import com.biblioteca.servicios.dto.LibrosAlquiladosDTO;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class DB {
@@ -22,13 +27,21 @@ public class DB {
 
     static {        
         Genero g1 = new Genero(1, "Comedia");
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        Date fecha = null;
         
         //LIBROS
         libros = new HashMap<Integer, Libro>();
-        libros.put(1, new Libro(1, "El Quijote", "Miguel de Cervantes", true, g1 ));
-        libros.put(2, new Libro(2, "La Odisea", "Homero", true, g1 ));
-        libros.put(3, new Libro(3, "La Divina Comedia", "Dante", true, g1 ));
-        libros.put(4, new Libro(4, "La vida es Sueño", "Calderón de la Barca", true, g1));
+        try {
+            fecha = format.parse("13/01/2021");
+            libros.put(1, new Libro(1, "El Quijote", "Miguel de Cervantes", true, g1,fecha , 22.10 ));
+            libros.put(2, new Libro(2, "La Odisea", "Homero", true, g1, fecha ,12.42));
+            libros.put(3, new Libro(3, "La Divina Comedia", "Dante", true, g1, fecha, 2.0));
+            libros.put(4, new Libro(4, "La vida es Sueño", "Calderón de la Barca", true, g1, fecha, 5.24));
+        } catch (ParseException ex) {
+            System.out.println(ex.getMessage());
+        }
+
 
         //USUARIOS
         usuarios = new HashSet<Usuario>();
