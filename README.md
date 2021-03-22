@@ -1,0 +1,3 @@
+# Biblioteca-JSF-MANAGED BEAN
+
+Nota: ESTE NO TRAE SERVLET
